@@ -1,0 +1,215 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(void)
+{
+srand(time(NULL));
+
+    printf("Seja bem vindo ao Super Trunfo. Hoje nós iniciaremos criando 2 cartas.\n");
+    printf("Nosso jogo será um Super Trunfo de cidades. Precisaremos que você escolha\n");
+    printf("2 cidades e preencha os campos solicitados para cada cidade, respectivamente.\n");
+
+    // VARIAVEIS
+
+    typedef struct {
+       char cidade1 [20];
+       char estado1 [2];
+       char codigo1 [4];
+       int populacao1
+       float area1
+       float pib1
+       int turismo1
+       float pib_per_capita1
+       float densidade1
+    } carta1;
+
+    typedef struct{
+      char cidade2[20];
+    char estado2[2];
+    char codigo2[4];
+    int populacao2;
+    float area2;
+    float pib2;
+    int turismo2;
+    float pib_per_capita2;
+    float densidade2;
+    } carta2;
+
+    
+    enum atributos {populacao, area, pib, turismo, pib_per_capita, densidade};
+    int populacao = [populacao1, populacao2]
+    int area = [area1, area2]
+    int pib = [pib1, pib2]
+    int turismo = [turismo1, turismo2]
+    int pib_per_capita = [pib_per_capita1, pib_per_capita2]
+
+
+    // ENTRADA DE DADOS CARTA 1
+    printf("Vamos começar com a primeira carta.\n");
+    printf("Qual o nome da cidade da primeira carta?\n");
+    scanf("%19s", cidade1);
+
+    printf("Qual o estado da cidade da primeira carta? (1 letra entre A e H)\n");
+    scanf(" %1s", estado1); // Espaço antes do %1s para ignorar o newline anterior
+
+    printf("Qual o código da primeira carta? (1 letra + 2 números, ex: A01)\n");
+    scanf("%3s", codigo1);
+
+    printf("Qual a população da cidade da primeira carta?\n");
+    scanf("%d", &populacao1);
+    
+
+    printf("Qual a área da cidade da primeira carta?\n");
+    scanf("%f", &area1);
+    
+
+    printf("Qual o PIB da cidade da primeira carta?\n");
+    scanf("%f", &pib1);
+    
+
+    printf("Qual o número de pontos turísticos da cidade da primeira carta?\n");
+    scanf("%d", &turismo1);
+
+    pib_per_capita1 = (float) pib1/populacao1;
+
+    densidade1 = (float) populacao1/area1;
+   
+
+    // ENTRADA DE DADOS CARTA 2
+    {
+    printf("Agora vamos para a segunda carta.\n\n\n\n");
+    printf("Qual o nome da cidade da segunda carta?\n");
+    scanf(" %19s", cidade2);
+
+    printf("Qual o estado da cidade da segunda carta? (1 letra entre A e H)\n");
+    scanf(" %1s", estado2);
+
+    printf("Qual o código da segunda carta? (1 letra + 2 números, ex: A01)\n");
+    scanf(" %3s", codigo2);
+
+    printf("Qual a população da cidade da segunda carta?\n");
+    scanf("%d", &populacao2);
+    
+
+    printf("Qual a área da cidade da segunda carta?\n");
+    scanf("%f", &area2);
+    
+
+    printf("Qual o PIB da cidade da segunda carta?\n");
+    scanf("%f", &pib2);
+    
+
+    printf("Qual o número de pontos turísticos da cidade da segunda carta?\n");
+    scanf("%d", &turismo2);
+
+
+       pib_per_capita2 = (float) pib2/populacao2;
+       densidade2 = (float) populacao2/area2;
+       
+    }
+
+
+    // EXIBIÇÃO DOS DADOS
+    printf("Carta 1:\nCidade: %s\nEstado: %s\nCódigo: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: $%.2f\nPontos turísticos: %d\nPIB per Capita: R$%.2f per capita\nDensidade Demográfica: %.2f pessoas/km²\n\n\n",
+           cidade1, estado1, codigo1, populacao1, area1, pib1, turismo1, pib_per_capita1, densidade1);
+
+    printf("Carta 2:\nCidade: %s\nEstado: %s\nCódigo: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: $%.2f\nPontos turísticos: %d\nPIB per Capita: R$%.2f per capita\nDensidade Demográfica: %.2f pessoas/km² \n\n",
+           cidade2, estado2, codigo2, populacao2, area2, pib2, turismo2, pib_per_capita2, densidade2);
+
+    printf("Parabéns pela criação das cartas! Agora vamos ao jogo. Vamos sortear um atributo para começar:\n");
+
+
+
+    //2ª Parte do jogo: Randomizar a escolha das cartas.
+    int atributoSorteado = rand() % 5;
+
+    printf("\n\n Atributo escolhido:\n\n");
+    switch (atributoSorteado) 
+    {
+      case populacao:
+         printf("População\n");
+      break;
+
+      case area:
+         printf("Área\n");
+      break;
+
+      case pib:
+         printf("PIB\n");
+      break;
+
+      case turismo:
+         printf("Turismo");
+      break;
+
+      case pib_per_capita:
+         printf("Pib per capita\n");
+      break;
+
+      case densidade:
+         printf("Densidade Populacional\n");
+      break;
+    }
+
+    //Comparação dos atributos
+    int valor1, valor2;
+    int valor3, valor4;
+    
+    if (atributoSorteado == populacao || area || pib || turismo || pib_per_capita) {
+
+      if (atributoSorteado == populacao) {
+         valor1 = carta1.populacao1;
+         valor2 = carta2.populacao2;
+      }
+         else if (atributoSorteado == area) {
+            valor1 = carta1.area1;
+            valor2 = carta2.area2;
+      }
+         else if (atributoSorteado == pib) {
+            valor1 = carta1.pib1;
+            valor2 = carta2.pib2;
+       }
+         else if (atributoSorteado == turismo) {
+            valor1 = carta1.turismo1;
+            valor2 = carta2.tursmo2;
+      }
+         else if (atributoSorteado == pib_per_capita) {
+            valor1 = carta1.pib_per_capita1;
+            valor2 = carta2.pib_per_capita2;
+      }
+         {
+            //Escolhas de quem venceu (maior número)
+         printf("Carta 1: %d\n", valor1);
+         printf("Carta 2: %d\n", valor2);
+
+         if (valor1 > valor2) {
+            printf("Carta 1 venceu!\n");
+         } else if (valor1 < valor2) {
+            printf("Carta 2 venceu!\n");
+         } else {
+            printf("Empate!\n");
+         }
+
+
+   }
+}
+   else if(atributoSorteado == densidade) {
+      {
+      valor3 = carta1.densidade1;
+      valor4 = carta2.densidade2;
+      }
+   //Escolhas de quem venceu
+         printf("Carta 1: %d\n", valor3);
+         printf("Carta 2: %d\n", valor3);
+
+         if (valor1 < valor2) {
+            printf("Carta 1 venceu!\n");
+         } else if (valor1 > valor2) {
+            printf("Carta 2 venceu!\n");
+         } else {
+            printf("Empate!\n");
+   }
+
+return 0;
+}
